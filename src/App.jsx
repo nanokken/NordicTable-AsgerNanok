@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import ProtectedRoutes from "./components/ProtectedRoutes";
+import Login from "./components/Login";
 import Home from "./pages/Home";
 import Menu from "./pages/Menu";
 import Booking from "./pages/Booking";
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/booking" element={<Booking />} />
+        <Route path="/login" element={<Login />} />
         <Route element={<ProtectedRoutes />}>
           <Route path="/backoffice" element={<Backoffice />} />
         </Route>
