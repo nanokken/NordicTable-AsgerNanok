@@ -16,7 +16,7 @@ export default function Navigation() {
 
   return (
     <>
-      <nav className="flex items-center justify-between px-8 py-5 bg-white">
+      <nav className="sticky top-0 z-50 flex items-center justify-between px-8 py-5 bg-white">
         {/* Logo */}
         <Link to="/">
           <img src={logo} alt="Nordic Table" className="h-12" />
