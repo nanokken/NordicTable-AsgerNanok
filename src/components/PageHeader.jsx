@@ -3,7 +3,7 @@ import headerBg from "../assets/assets/headerbg.png";
 export default function PageHeader({ subtitle, title, description }) {
   return (
     <section
-      className="relative w-full h-55 md:h-65 flex items-center bg-cover bg-center"
+      className="relative w-full pb-25 md:pt-35 flex items-center bg-cover bg-center"
       style={{ backgroundImage: `url(${headerBg})` }}
     >
       {/* Dark overlay */}
