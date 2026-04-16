@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logoWhite from "../assets/logoWhite.png";
+import logoWhite from "../assets/logoWhite.webp";
 
 export default function Footer() {
   return (

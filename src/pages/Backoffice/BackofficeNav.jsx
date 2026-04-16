@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-import logo from "../../assets/logoWhite.png";
+import logo from "../../assets/logoWhite.webp";
 
 export default function BackofficeNav({ activeTab, setActiveTab }) {
   const { logout } = useAuth();

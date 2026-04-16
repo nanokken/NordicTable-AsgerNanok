@@ -1,9 +1,9 @@
-import headerBg from "../assets/assets/headerbg.png";
+import headerBg from "../assets/assets/headerbg.webp";
 
 export default function PageHeader({ subtitle, title, description }) {
   return (
     <section
-      className="relative w-full pb-25 md:pt-35 flex items-center bg-cover bg-center"
+      className="relative w-full pt-25 pb-10 md:pt-35 flex items-center bg-cover bg-center"
       style={{ backgroundImage: `url(${headerBg})` }}
     >
       {/* Dark overlay */}

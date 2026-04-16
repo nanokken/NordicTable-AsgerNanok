@@ -1,12 +1,29 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.webp";
+import logoWhite from "../assets/logoWhite.webp";
 
 export default function Navigation() {
   const { user, logout } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+
+  useEffect(() => {
+    if (!isHome) {
+      setScrolled(true);
+      return;
+    }
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    onScroll();
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [isHome]);
+
+  const transparent = isHome && !scrolled;
 
   const handleLogout = () => {
     logout();
@@ -16,29 +33,29 @@ export default function Navigation() {
 
   return (
     <>
-      <nav className="sticky top-0 z-50 flex items-center justify-between px-8 py-5 bg-white">
+      <nav className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-5 transition-colors duration-300 ${transparent ? "bg-transparent" : "bg-white shadow-sm"}`}>
         {/* Logo */}
         <Link to="/">
-          <img src={logo} alt="Nordic Table" className="h-12" />
+          <img src={transparent ? logoWhite : logo} alt="Nordic Table" className="h-12" />
         </Link>
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-10">
           <Link
             to="/"
-            className="text-sm font-semibold tracking-widest text-[#3d3529] uppercase hover:text-[#8a8078] no-underline transition-colors"
+            className={`text-sm font-semibold tracking-widest uppercase no-underline transition-colors ${transparent ? "text-white hover:text-gray-300" : "text-[#3d3529] hover:text-[#8a8078]"}`}
           >
             Forside
           </Link>
           <Link
             to="/menu"
-            className="text-sm font-semibold tracking-widest text-[#3d3529] uppercase hover:text-[#8a8078] no-underline transition-colors"
+            className={`text-sm font-semibold tracking-widest uppercase no-underline transition-colors ${transparent ? "text-white hover:text-gray-300" : "text-[#3d3529] hover:text-[#8a8078]"}`}
           >
-            Menu
+            Menukort
           </Link>
           <Link
             to="/booking"
-            className="text-sm font-semibold tracking-widest text-[#3d3529] uppercase hover:text-[#8a8078] no-underline transition-colors"
+            className={`text-sm font-semibold tracking-widest uppercase no-underline transition-colors ${transparent ? "text-white hover:text-gray-300" : "text-[#3d3529] hover:text-[#8a8078]"}`}
           >
             Bestil bord
           </Link>
@@ -47,14 +64,14 @@ export default function Navigation() {
               {user.role === "admin" && (
                 <Link
                   to="/backoffice"
-                  className="text-sm font-semibold tracking-widest text-[#3d3529] uppercase hover:text-[#8a8078] no-underline transition-colors"
+                  className={`text-sm font-semibold tracking-widest uppercase no-underline transition-colors ${transparent ? "text-white hover:text-gray-300" : "text-[#3d3529] hover:text-[#8a8078]"}`}
                 >
                   Backoffice
                 </Link>
               )}
               <button
                 onClick={handleLogout}
-                className="text-sm font-semibold tracking-widest text-[#3d3529] uppercase underline underline-offset-4 hover:text-[#8a8078] transition-colors cursor-pointer bg-transparent border-none"
+                className={`text-sm font-semibold tracking-widest uppercase underline underline-offset-4 transition-colors cursor-pointer bg-transparent border-none ${transparent ? "text-white hover:text-gray-300" : "text-[#3d3529] hover:text-[#8a8078]"}`}
               >
                 Log ud
               </button>
@@ -62,7 +79,7 @@ export default function Navigation() {
           ) : (
             <Link
               to="/login"
-              className="text-sm font-semibold tracking-widest text-[#3d3529] uppercase underline underline-offset-4 hover:text-[#8a8078] no-underline transition-colors"
+              className={`text-sm font-semibold tracking-widest uppercase underline underline-offset-4 transition-colors ${transparent ? "text-white hover:text-gray-300" : "text-[#3d3529] hover:text-[#8a8078]"}`}
             >
               Log ind
             </Link>
@@ -75,9 +92,9 @@ export default function Navigation() {
           onClick={() => setMenuOpen(true)}
           aria-label="Åbn menu"
         >
-          <span className="block w-6 h-[2px] bg-[#3d3529]"></span>
-          <span className="block w-6 h-[2px] bg-[#3d3529]"></span>
-          <span className="block w-6 h-[2px] bg-[#3d3529]"></span>
+          <span className={`block w-6 h-[2px] ${transparent ? "bg-primary" : "bg-[#3d3529]"}`}></span>
+          <span className={`block w-6 h-[2px] ${transparent ? "bg-primary" : "bg-[#3d3529]"}`}></span>
+          <span className={`block w-6 h-[2px] ${transparent ? "bg-primary" : "bg-[#3d3529]"}`}></span>
         </button>
       </nav>
 
