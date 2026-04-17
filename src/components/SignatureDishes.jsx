@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useCRUD } from "../hooks/useCRUD";
 
-const BASE_URL = "http://localhost:3042";
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 const CATEGORY_LABELS = {
   starter: "Forret",

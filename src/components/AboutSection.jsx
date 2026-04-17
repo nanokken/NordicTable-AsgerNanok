@@ -1,12 +1,24 @@
+import { useState, useEffect } from "react";
 import restaurantImg from "../assets/assets/restaurant.webp";
 
-const stats = [
-  { value: "12", label: "Retter på menuen" },
-  { value: "6", label: "Års erfaring" },
-  { value: "100", label: "% Nordiske råvarer" },
-];
-
 export default function AboutSection() {
+  const [dishCount, setDishCount] = useState(0);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/dishes`)
+      .then((res) => res.ok ? res.json() : Promise.reject())
+      .then((result) => {
+        const dishes = Array.isArray(result) ? result : result.data || [];
+        setDishCount(dishes.length);
+      })
+      .catch(() => setDishCount(0));
+  }, []);
+
+  const stats = [
+    { value: String(dishCount), label: "Retter på menuen" },
+    { value: "6", label: "Års erfaring" },
+    { value: "100", label: "% Nordiske råvarer" },
+  ];
   return (
     <section className="py-16 md:py-24 px-6 md:px-16 bg-background">
       <div className="max-w-6xl mx-auto">
@@ -34,7 +46,7 @@ export default function AboutSection() {
             </h2>
 
             {/* Accent line */}
-            <span className="block w-14 h-[2px] bg-primary mb-6" />
+            <span className="block w-14 h-0.5 bg-primary mb-6" />
 
             <p className="text-sm md:text-base text-gray-600 leading-relaxed mb-4">
               Nordic Table er grundlagt med en klar overbevisning: god mad
