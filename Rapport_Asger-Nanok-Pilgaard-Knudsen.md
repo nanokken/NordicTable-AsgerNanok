@@ -120,7 +120,7 @@ Min tidsplan har jeg forsøgt at holde struktureret. Jeg startede med grundlægg
 Til min mundtlige eksamen vil jeg gerne fortælle om:
 
 - **Backoffice** – CRUD-funktionalitet til både retter og reservationer, med image upload, status-håndtering og en brugervenlig admin-oplevelse.
-- **useCRUD hook** – Min generiske hook der eliminerer boilerplate-kode og gør det nemt at tilføje nye ressourcer. Den håndterer authorization headers, FormData for fil-uploads og automatisk state-opdatering.
+- **useCRUD hook** – Min genanvendelige hook der eliminerer boilerplate-kode og gør det nemt at tilføje nye ressourcer. Den håndterer authorization headers, FormData for fil-uploads og automatisk state-opdatering.
 - **AuthContext og ProtectedRoutes** – Hvordan jeg har implementeret role-based access control, så kun admins kan tilgå backoffice.
 - **Komponent-genbrug** – Jeg har genbrugt flere komponenter på tværs af sider, f.eks. PageHeader, Footer og BookingSection, for at holde koden DRY.
 
