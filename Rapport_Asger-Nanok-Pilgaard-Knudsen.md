@@ -112,6 +112,7 @@ Min tidsplan har jeg forsøgt at holde struktureret. Jeg startede med grundlægg
 - Jeg bruger custom Tailwind-tema med farver og fonts defineret via CSS custom properties – primærfarve #7C632F (varm brun/guld) og Cormorant Garamond som serif-font for at skabe et nordisk, elegant udtryk.
 - Jeg bruger **React.lazy()** og **Suspense** til lazy-loading af sider for bedre performance.
 - Backend bruger **Express 5** med **MongoDB/Mongoose**, **JWT** til autentificering, **bcryptjs** til password-hashing og **Multer** til fil-upload af retter-billeder.
+- Jeg har brugt **GitHub Copilot** som AI-assisteret værktøj til hjælp med kode og fejlfinding undervejs i udviklingsprocessen.
 
 ---
 
